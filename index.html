@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Smile数卡网络工作室</title>
+    <meta name="robots" content="index,follow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/amazeui.min.css">
+    <!-- <link rel="shortcut icon" href="http://dz.6gou6.com/static/img/favicon.ico"> -->
+	  <link rel="shortcut icon" href="img/air.png">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link href="css/sweetalert.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/mh_style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+	<link rel="stylesheet" href="css/share-common.css">
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" data-path="color_18" type="text/css" href="css/color_18.css" media="all">
+	
+    <script src="js/jquery.min1.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script src="js/swiper.min.js"> </script>
+ <style type="text/css">.text h3{color:#085ac4!important}body{--link-title-color:#085ac4}.desc{color:#085ac4!important}.ms1{position:relative;float:right;color:#02a982}</style>
+    <style>
+        .hide {
+            display:none;
+        }
+        .hide2 {
+            display:none;
+        }
+        .modal {
+            position: absolute;
+            height: 167px;
+            width: 300px;
+            margin-left: 8%;
+            margin-top: -350px;
+            background: #fff;
+            z-index: 1000;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .modal2 {
+            position: absolute;
+            height: 167px;
+            width: 300px;
+            margin-left: 8%;
+            margin-top: -350px;
+            background: #fff;
+            z-index: 1000;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .pop_tip_text {
+            font-size: 16px;
+            line-height: 25px;
+            padding: 20px;
+            text-align: center;
+        }
+        .pop_tip_text2 {
+            font-size: 16px;
+            line-height: 25px;
+            padding: 20px;
+            text-align: center;
+        }
+        .shade {
+          position: fixed;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          opacity: 0.6;
+          background-color: black;
+          z-index: 9;
+        }
+        .shade2 {
+          position: fixed;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          opacity: 0.6;
+          background-color: black;
+          z-index: 9;
+        }
+        .confirm{
+          /* background: #6b7fda;
+          margin: 10px 10px; */
+            margin: 0 8px;
+            display: inline-block;
+            width: calc(50% - 50px);
+            background: #70b4fd;
+            text-align: center;
+            line-height: 32px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .cancel{
+          /* background: #9c9a9a;
+          margin: 10px 10px; */
+            margin: 0 8px;
+            display: inline-block;
+            width: calc(50% - 50px);
+            background: #9c9a9a;
+            text-align: center;
+            line-height: 32px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .cancel:hover {
+          background: #cfcdcd;
+        }
+        .confirm:hover {
+          background: #98a2ce;
+        }
+        .code_div {
+            margin-top: 20px;
+        }
+        .input_code {
+            margin-top: 20px;
+            width: 250px;
+            height: 50px;
+            border:1px solid #c8cccf;
+        }
+      </style>
+
+    <script src="js/npm-vue.js"></script>
+    <script type="text/javascript">
+        var baseUrl = '${base}';
+        adaptation(750);
+        function adaptation(size) {
+            if (document.documentElement.clientWidth > size) {
+                document.documentElement.style.fontSize = size / 7.5 + "px"
+            } else {
+                document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px"
+            }
+        }
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?d3b437809032a545e6cf9f2afc03807d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script type="text/javascript">
+        var is_weixin = (function () {
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == "micromessenger") {//微信中打开网页
+                window.onload = function () {
+                    //var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+                    var tip = document.getElementById('weixin-tip-box');
+                    if (is_weixin) {
+                        tip.style.display = 'block';
+                        tip.style.position = 'absolute';
+                        tip.style.zIndex = '100';
+                        tip.style.backgroundColor = 'white';
+                        return false;
+                    }
+                };
+                return true;
+            } else if (ua.match(/QQ/i) == "qq") {//qq里打开网页
+                window.onload = function () {
+                    //var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+                    var tip = document.getElementById('weixin-tip-box');
+                    if (is_weixin) {
+                        tip.style.display = 'block';
+                        tip.style.position = 'absolute';
+                        tip.style.zIndex = '100';
+                        tip.style.backgroundColor = 'white';
+                        return false;
+                    }
+                };
+                return true;
+            } else {
+                var baseUrl = '${base}';
+                adaptation(750);
+                function adaptation(size) {
+                    if (document.documentElement.clientWidth > size) {
+                        document.documentElement.style.fontSize = size / 7.5 + "px"
+                    } else {
+                        document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px"
+                    }
+                }
+
+                var _hmt = _hmt || [];
+                (function() {
+                    var hm = document.createElement("script");
+                    hm.src = "";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                })();
+                return true;
+            }
+        })();
+    </script>
+</head>
+<body>
+<div id='weixin-tip-box'>
+    <div class="weixin-tip">
+        <img src="img/yindao.png" alt="微信打开" style="width: 100%; height: 800px;">
+    </div>
+    <div class="triangle_border_up"></div>
+</div>
+
+<div class="warp" id="all">
+    <div id="content-wrapper" class="container">
+        <div class="container text-center" style="line-height:30px;">
+        </div>
+        <div class="container">
+            <div class="grid-6 text-center">
+                <div>
+                    <!-- 顶部图片 -->
+                    <!-- <a href="https://imgtu.com/i/TSmhDI"></a> -->
+                    <!-- <img src="img/tsmhdi.jpg" alt="TSmhDI.jpg" border="0" class="box8"/> -->
+                    <img src="img/q.png" class="box8">
+<!--                    <video controls class="videoItem" width="100%" autoplay loop="loop">-->
+<!--                        <source src="https://cdn.hej158.com/d/xpnmv9Y4/tfhelp/xblhelp.m4v?download=1" type="video/webm">-->
+<!--                    </video>-->
+<!--                    <video controls="controls" autoplay="autoplay" style="width:100%;" webkit-playsinline="true" loop="loop"-->
+<!--                       src="https://cdn.hej158.com/d/xpnmv9Y4/tfhelp/xblhelp.m4v?download=1" type="video/m4v">-->
+<!--                    </video>-->
+                </div>
+
+                <div class="lb2 gonggao">
+                    <font color="Yellow"> TF兑换模式已上架 90天有效期 IOS17用户 需手动去设置-通用-设备管理/VPN-安装信任</font><br>
+                    <font color="Yellow"> 特别提醒：TF只能在TF兑换码界面兑换选项里兑换安装</font><br>
+                                        <font color="Yellow">斗战神包年套餐398 包含激活码</font><br>
+                    <font color="Yellow">可随着官方更新 免费更新无需购买商兑卡！</font><br>
+                </div>
+            </div>
+
+            <div>
+                <a data-src="https://www.kdocs.cn/l/cgCNFi9kUJip" href="javascript: void(0)" class="btn btn-primary btn-lg download">备份迁移导入聊天记录教程</a>
+            </div>
+            <div>
+              <a data-src="https://down.iosapp123.com/#/redeem/DTF" href="javascript: void(0)" class="btn btn-primary btn-lg download">TF兑换码安装</a>
+            </div>
+          <!--  <div>
+                <a data-src="" href="javascript: void(0)" class="btn btn-primary btn-lg download">广告位出租</a>
+            </div> -->
+			<div>
+			    <a target="_blank" href="./kf.html" class="btn btn-primary btn-lg">联系客服丨购买激活码/TF兑换码</a>
+			</div>
+            <div>
+                <a target="_blank" href="http://dz.6gou6.com/check/index.html" class="btn btn-primary btn-lg">激活码查询</a>
+            </div>
+        
+
+                <!-- <div class="lb2 gonggao">
+                    <div class="gg_cont">
+                        <font color="Yellow">🔸 历史更新记录</font></br>
+                        <font color="Yellow">🔸 11.06更新至2.0  相册大视频全面升级至120M 万人尊享CDN不卡顿 </font></br>
+                        <font color="Yellow">🔸 10.10更新至1.3 修复语音转发 添加全新群发功能 添加跟随/极速转发过滤功能 </font></br>
+                        <font color="Yellow">🔸 9.30更新至1.2 ios12等低版本系统细节修复 修复部分bug 新增模拟ipad登录</font></br>
+                        <font color="Yellow">🔸 简洁 高效 省电</font></br>
+                        <font color="Yellow">🔸 真714  拍一拍  ios14</font></br>
+                        <font color="Yellow">🔸 mp3/mp4转语音 相册100M视频直传朋友圈</font></br>
+                        <font color="Yellow">🔸 极速查好友状态 封号名片推送 封号好友备份</font></br>
+
+                    </div>
+                </div> -->
+
+                <div style="text-align:center">
+                    <!-- 底部图片 -->
+                    <!-- <a href="https://imgtu.com/i/TSm4bt"></a> -->
+                    <!-- <img src="img/tsm4bt.jpg" alt="TSm4bt.jpg" border="0" class="box8"/> -->
+                    <img src="img/AAA.png" />
+                </div>
+
+                <div class="sa-icon sa-error" style="display: none;">
+						<span class="sa-x-mark">
+							<span class="sa-line sa-left"></span>
+							<span class="sa-line sa-right"></span>
+						</span>
+                </div>
+                <div class="sa-icon sa-warning" style="display: none;">
+                    <span class="sa-body"></span>
+                    <span class="sa-dot"></span>
+                </div>
+                <div class="sa-icon sa-info" style="display: none;">
+                </div>
+                <div class="sa-icon sa-success animate" style="display: block;">
+                    <span class="sa-line sa-tip animateSuccessTip"></span>
+                    <span class="sa-line sa-long animateSuccessLong"></span>
+                    <div class="sa-placeholder">
+                    </div>
+                    <div class="sa-fix">
+                    </div>
+                </div>
+                <div class="sa-icon sa-custom" style="display: none;">
+                </div>
+
+                <div class="la-ball-fall">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div id="course" style="display: none;">
+                <div class="close iconfont icon-guanbi"></div>
+                <div class="swiper-container gallery-top">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-image:url(static/images/1.jpg)"></div>
+                        <!-- <div class="swiper-slide" style="background-image:url(static/images/2.jpg)"></div> -->
+                        <div class="swiper-slide" style="background-image:url(static/images/3.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(static/images/4.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(static/images/5.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(static/images/6.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(static/images/7.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(static/images/8.jpg)"></div>
+                        <!-- <div class="swiper-slide" style="background-image:url(static/images/9.jpg)"></div> -->
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <div class="mask"></div>
+            <div id="imgMask"></div>
+        </div>
+		<div class="link-header">
+		    <div class="item-header">
+		        <h3>实用简单/操作方便/助力微商/从未止步</h3>
+		</div>
+		<h4>
+		     <div style="text-align:center">
+		     <a href="index.html">
+		        <span id="runtime_span"></span>
+		        <script type="text/javascript">function show_runtime(){window.setTimeout("show_runtime()",1000);X=new Date("03/25/2017 18:18:18");Y=new Date();T=(Y.getTime()-X.getTime());M=24*60*60*1000;a=T/M;A=Math.floor(a);b=(a-A)*24;B=Math.floor(b);c=(b-B)*60;C=Math.floor((b-B)*60);D=Math.floor((c-C)*60);runtime_span.innerHTML="本站已运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"}show_runtime();</script>
+		    </a>
+		    </div>
+		</h4>
+    </div>
+
+</body>
+<script src="js/yhpl.js"></script>
+<script>var sf = new Snowflakes({color: "#cccccc"});</script>
+<script src="js/index.js"></script>
+<script src="js/jquery.min1.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/jquery.min1.js" type="text/javascript"></script>
+<script>
+    //添加按钮
+    $('.BTN').click(function () {
+      $('.hide').removeClass('hide');
+      $('#out_test').val();
+    });
+    //取消按钮
+    $('.cancel').click(function () {
+      $('.modal,.shade').addClass('hide');
+      console.log("取消按钮");
+    });
+    // 外部测试
+    $('#out_confirm').click(function () {
+      var code = $('#out_test').val();
+      console.log("code: " + code);
+      var threeUrl = "https://apit3.qianxun.tf/tfvip/2MuIrz6t/" + code
+      $.ajax({
+          url: threeUrl,
+          dataType: 'json',
+          processData: false,
+          type: 'get',
+          crossDomain: true, // 会让请求头中包含跨域的额外信息，但不会含cookie
+          xhrFields: {
+              withCredentials: true    // 前端设置是否带cookie
+          },
+          success: function(result) {
+              var jsonData = JSON.stringify(result);
+              var data = $.parseJSON(jsonData);
+              if (data.code === 777) {
+                  alert(data.msg);
+                  return;
+              }
+              window.location.href = data.data
+          },
+          error:function(err) {
+              // alert("响应异常: " + err)
+              // alert("弹出内容: " + err);
+              console.log(err);
+          }
+      });
+
+    $('.modal,.shade').addClass('hide');
+    console.log("确认按钮");
+    });
+  </script>
+  
+  <script>
+    //添加按钮
+    $('.BTN2').click(function () {
+      $('.hide2').removeClass('hide2');
+      $('#in_test').val();
+    });
+    //取消按钮
+    $('.cancel').click(function () {
+      $('.modal2,.shade2').addClass('hide2');
+      console.log("取消按钮");
+    });
+    // 内部测试方式
+    $('#in_confirm').click(function () {
+      var code = $('#in_test').val();
+      console.log("code: " + code);
+      // 三开
+      var threeUrl = "https://apit4.qianxun.tf/tfvip/F8dL5es7/" + code
+      $.ajax({
+          url: threeUrl,
+          dataType: 'json',
+          processData: false,
+          type: 'get',
+          crossDomain: true, // 会让请求头中包含跨域的额外信息，但不会含cookie
+          xhrFields: {
+              withCredentials: true    // 前端设置是否带cookie
+          },
+          success: function(result) {
+              var jsonData = JSON.stringify(result);
+              var data = $.parseJSON(jsonData);
+              if (data.code === 777) {
+                  alert(data.msg);
+                  return;
+              }
+              window.location.href = data.data
+          },
+          error:function(err) {
+              // alert("响应异常: " + err)
+              // alert("弹出内容: " + err);
+              console.log(err);
+          }
+      });
+
+    $('.modal2,.shade2').addClass('hide2');
+    console.log("确认按钮");
+    });
+	
+	 
+	<script>var tim=1;setInterval("tim++",10);var autourl=new Array;for(i=0;i<=6;i++)autourl[i]=$(".speedlist li").eq(i).find("a").attr("href");function auto(url){var str=tim;console.log(str),url==autourl[0]&&$("#lineMs0").html(str+"ms"),url==autourl[1]&&$("#lineMs1").html(str+"ms"),url==autourl[2]&&$("#lineMs2").html(str+"ms"),url==autourl[3]&&$("#lineMs3").html(str+"ms"),url==autourl[4]&&$("#lineMs4").html(str+"ms"),url==autourl[5]&&$("#lineMs5").html(str+"ms"),url==autourl[6]&&$("#lineMs6").html(str+"ms")}function run(){for(var i=0;i<autourl.length;i++)document.write("<img src="+autourl[i]+"/"+Math.random()+" width=1 height=1 onerror=auto('"+autourl[i]+"') style='display:none'>")}run();</script>
+	
+	 <script>function fuckyou(){
+	      window.close();
+	      window.location="about:blank";
+	     }
+	      function ck() {
+	      console.profile();
+	      console.profileEnd();
+	      if(console.clear) { console.clear() };
+	      if (typeof console.profiles =="object"){
+	      return console.profiles.length > 0;
+	      }
+	     }
+	     function hehe(){
+	     if( (window.console && (console.firebug || console.table && /firebug/i.test(console.table()) )) || (typeof opera == 'object' && typeof opera.postError == 'function' && console.profile.length > 0)){
+	      fuckyou();
+	     }
+	     if(typeof console.profiles =="object"&&console.profiles.length > 0){
+	     fuckyou();
+	     }
+	     }
+	     hehe();
+	     window.onresize = function(){
+	     if((window.outerHeight-window.innerHeight)>200)
+	      fuckyou();
+	     }</script>	
+	     
+	     <script>
+	          document.oncontextmenu = function () { 
+	              alert('浏览器提示：该网站已全部加密！');
+	              return false; 
+	              };
+	             document.onkeydown = function () {
+	                 if (window.event && window.event.keyCode == 123) {
+	                     event.keyCode = 0;
+	                     event.returnValue = false;
+	                     alert('浏览器提示：该网站已全部加密！');
+	                     return false;
+	                 }
+	             };
+	         </script>              
+
+</html>
